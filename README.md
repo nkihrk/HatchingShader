@@ -43,8 +43,6 @@ Unity5.6.3p1(64bit)の環境で作成しました。
 
 * Roughness……影の粗さを調整できます。
 
-* Alpha Cutoff……雑実装なので必ずしも透過するとは限りません。コードの書き換えが必要
-
 * Toggle Gray Scale……色をグレースケールにします。
 
 * Cull Mode……Cullの設定ができます  
