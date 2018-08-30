@@ -1,4 +1,4 @@
-# HatchingShader
+# Hatching Shader（ハッチングシェーダー）
 
 ハッチングを表現したシェーダーです。このシェーダーにはTAM(Tonal Art Map)が必要です。各自で用意していただくことになります。  
 Unity5.6.3p1(64bit)の環境で作成しました。
@@ -11,11 +11,11 @@ Unity5.6.3p1(64bit)の環境で作成しました。
 
 |HatchingShader|HatchingShaderLerpTes|
 |---|---|
-|![](Unity_2018-08-20_20-00-57.png)|![](Unity_2018-08-29_03-33-28.jpg)|
+|![](Unity_2018-08-20_20-00-57.png)|![](Unity_2018-08-29_03-33-28.jpg)|  
 
----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------  
 
-### インスペクターのパラメーターについて
+### インスペクターのパラメーターについて  
 
 * Hatch0～5……作成したTAM(Tonal Art Map)を貼り付けてください。
 
@@ -47,10 +47,10 @@ Unity5.6.3p1(64bit)の環境で作成しました。
 
 * Toggle Gray Scale……色をグレースケールにします。
 
-* Cull Mode……Cullの設定ができます
+* Cull Mode……Cullの設定ができます  
 
 
-### [HatchingShaderLerpTes/HatchingShaderTes]で追加された設定について
+### [HatchingShaderLerpTes/HatchingShaderTes]で追加された設定について  
 
 * Noise Texture……テクスチャの色情報に沿って形が変形します。
 
@@ -64,8 +64,8 @@ Unity5.6.3p1(64bit)の環境で作成しました。
 * Noise Power……Noise Textureによって頂点が押し出される度合いを設定します。
 
 * Noise Factor……全体的な頂点の押し出しの度合いを調整します。  
-※Noise Textureをセットしていない場合、Noise Powerは機能しません。しかし、Noise SpeedおよびNoise Factorに関しては機能します。
+※Noise Textureをセットしていない場合、Noise Powerは機能しません。しかし、Noise SpeedおよびNoise Factorに関しては機能します。  
 
 
-### 最後に。
+### 最後に。  
 コード自体の最適化、効率化は一切おこなっていない上に、[参考にした論文](http://hhoppe.com/hatching.pdf "Real-Time Hatching")通りにテクスチャを二枚にパックすることもしていません。コードの冗長さには目をつむってください。数列とかアルゴリズム考えるのめんどくさかった(´･_･`)
