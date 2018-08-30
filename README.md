@@ -48,7 +48,7 @@ Unity5.6.3p1(64bit)の環境で作成しました。
 * Cull Mode……Cullの設定ができます  
 
 
-### [HatchingShaderLerpTes/HatchingShaderTes]で追加された機能について  
+### [HatchingShaderLerpTes/HatchingShaderTes]で追加されたパラメーターについて  
 
 * Noise Texture……テクスチャの色情報に沿って形が変形します。
 
