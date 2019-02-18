@@ -58,6 +58,13 @@ Shader "Custom/HatchingShader"
             float2x2 m = rotateFnc(b);
             return float4(mul(m, a.xz), a.yw).xzyw;
         }
+
+        #ifdef USING_STEREO_MATRICES
+        static float3 centerCameraPos = 0.5 * (unity_StereoWorldSpaceCameraPos[0] +  unity_StereoWorldSpaceCameraPos[1]);
+        #else
+        static float3 centerCameraPos = _WorldSpaceCameraPos;
+        #endif
+
         ENDCG
 
         Pass
@@ -115,10 +122,10 @@ Shader "Custom/HatchingShader"
             fixed4 frag(v2f i): SV_Target
             {
                 float3 N = i.normal;
-                float3 V = normalize(_WorldSpaceCameraPos.xyz - i.wpos.xyz);
+                float3 V = normalize(centerCameraPos.xyz - i.wpos.xyz);
 
                 float NdotV = max(0, dot(N, V));
-                float NNdotV = 1 - dot(N, V);
+                float NNdotV = 1.01 - dot(N, V);
                 float rim = pow(NNdotV, _RimPower) * _RimAmplitude;
 
                 fixed4 col = _OutlineColor;
@@ -243,10 +250,10 @@ Shader "Custom/HatchingShader"
                 lightCol.rgb += max(0, ShadeSH9(float4(N, 1)));
 
                 float3 L = lightDir;
-                float3 V = normalize(_WorldSpaceCameraPos.xyz - i.wpos.xyz);
+                float3 V = normalize(centerCameraPos.xyz - i.wpos.xyz);
 
                 float NdotV = max(0, dot(N, V));
-                float NNdotV = 1 - dot(N, V);
+                float NNdotV = 1.01 - dot(N, V);
                 float rim = pow(NNdotV, _RimPower) * _RimAmplitude;
 
                 float NdotL = max(0, dot(L, N));
@@ -339,7 +346,7 @@ Shader "Custom/HatchingShader"
                 col.a = 1;
 
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+                return saturate(col);
             }
             ENDCG
             
@@ -419,7 +426,7 @@ Shader "Custom/HatchingShader"
                 float3 worldNormal = mul(TBN, tangentNormal);
 
                 float3 N = lerp(i.normal, worldNormal, saturate(length(tangentNormal) * 100));
-                float3 V = normalize(_WorldSpaceCameraPos.xyz - i.wpos.xyz);
+                float3 V = normalize(centerCameraPos.xyz - i.wpos.xyz);
 
                 float3 lightDir;
                 #if defined(POINT) || defined(POINT_COOKIE) || defined(SPOT)
@@ -432,7 +439,7 @@ Shader "Custom/HatchingShader"
                 float3 L = lightDir;
 
                 float NdotV = max(0, dot(N, V));
-                float NNdotV = 1 - dot(N, V);
+                float NNdotV = 1.01 - dot(N, V);
                 float rim = pow(NNdotV, _RimPower) * _RimAmplitude;
 
                 float NdotL = max(0, dot(L, N));
@@ -525,7 +532,7 @@ Shader "Custom/HatchingShader"
                 col.a = 1;
 
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+                return saturate(col);
             }
             ENDCG
             
