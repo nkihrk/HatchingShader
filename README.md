@@ -9,9 +9,7 @@ Unity5.6.3p1(64bit)の環境で作成しました。
 
 * HatchingShaderLerpTes/HatchingShaderTes……背景のオブジェクトなどで使うことを想定し、上記のシェーダーに機能を追加したものです。機能に差はありませんが、二つのシェーダーで若干見た目に差があります。
 
-|HatchingShader|HatchingShaderLerpTes|
-|---|---|
-|![](Unity_2018-08-20_20-00-57.png)|![](Unity_2018-08-29_03-33-28.jpg)|  
+![](https://nkihrk.github.io/img/works/shader/ugolino_with_hatching_shader.jpg)
 
 ---------------------------------------------------------------------------------  
 
